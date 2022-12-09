@@ -1,3 +1,5 @@
+# https://adventofcode.com/2022/day/8
+
 # read and initial process
 with open('input8.txt','r') as f:
     data = f.read().strip().split('\n')

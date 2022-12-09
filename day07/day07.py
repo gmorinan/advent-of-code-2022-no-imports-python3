@@ -1,4 +1,4 @@
-# https://adventofcode.com/2022/day/5
+# https://adventofcode.com/2022/day/7
 
 # read it
 with open('input.txt','r') as f:
