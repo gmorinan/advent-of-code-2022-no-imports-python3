@@ -30,15 +30,6 @@ def get_monkey_facts(row):
     # output key results
     return {'id': m_id, 'items': items, 'func': func, 'test': test}
 
-# apply one of these functions after every modification
-def reduce_worry1(x): # part 1
-    return int(x/3)
-def reduce_worry2(x): # part 2 
-    return x % 9699690 
-# this is the lowest common multiple of the numbers used in the test functions
-# i.e. lowest_common_multiple(3, 13, 19, 17, 5, 7, 11, 2) = 9699690
-# we can remove this value safely without affecting future calculations
-
 # main solver function
 def solver(parsed_data, worry_func, n_rounds):
 
@@ -70,6 +61,23 @@ with open('input.txt','r') as f:
 rows = [row for row in data.strip().split('Monkey ') if len(row)>0]
 # clean and parse things
 parsed_data = [get_monkey_facts(row) for row in rows]
+
+
+# clean and parse things
+parsed_data = [get_monkey_facts(row) for row in rows]
+
+# apply this after every modification in part 1
+def reduce_worry1(x):
+    return int(x/3)
+
+# for part 2 we need to compute the lowest common multiple of the test values 
+# luckily the values are all primes so we can just multiply together
+vals = [p['other']['test_div'] for p in parsed_data]
+big_val = 1
+for v in vals: big_val *= v
+# so we apply this function after every modification for part 2
+def reduce_worry2(x):
+    return x % big_val
 
 # answer to part 1
 print(solver(parsed_data, reduce_worry1, 20))
