@@ -1,5 +1,5 @@
 # advent-of-code-2022-simple-python
 
-Trying to keep it as simple and understandable as possible. Each script assumes it is being run from the same folder as that day's input file. 
+No imports, no refactoring - just the first answer I could come up with. Tried to keep it as simple and readable as possble.
 
-Who needs to import libraries?!
+Each script assumes it is being run from the same folder as that day's input file. 
