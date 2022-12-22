@@ -145,7 +145,7 @@ print(eval_solution('AA', visited, unvisited, 30, 0)[-1])
 
 
 # part 2 re-initiate
-print(eval_solution('AA', visited, unvisited, 30, 0)[-1])
+unvisited, visited, states = initiate()
 eval_solution('AA', visited, unvisited, 26, 0)[-1]
 
 # sort and filter answers > 0
