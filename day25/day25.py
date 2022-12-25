@@ -1,7 +1,7 @@
 # https://adventofcode.com/2022/day/25
 
 # read n split
-with open('input25.txt', 'r') as f:
+with open('input.txt', 'r') as f:
     data = f.read().strip().split('\n')
 
 # for mapping to/from the snafu digits

@@ -1,7 +1,7 @@
 # https://adventofcode.com/2022/day/8
 
 # read and initial process
-with open('input8.txt','r') as f:
+with open('input.txt', 'r') as f:
     data = f.read().strip().split('\n')
 trees = [[int(char) for char in row] for row in data]
 n = len(data)
@@ -17,7 +17,7 @@ for i, row in enumerate(trees):
         # outer ring condition
         if (i in [0, n-1]) | (j in [0, n-1]):
             vmat[i][j] = True
-            continue # no need to check any others
+            continue  # no need to check any others
 
         # check if visible from left
         if tree > max(row[:j]):
@@ -46,16 +46,19 @@ print(sum([sum(row) for row in vmat]))
 smat = [[0 for _ in range(n)] for _ in range(n)]
 
 # function that given a tree and a list of neighbours
-# (ordered closest to farthest) 
+# (ordered closest to farthest)
 # returns the number that are seen
+
+
 def how_many_seen(tree, tree_lst):
-    if len(tree_lst)==0: # no trees no problem
+    if len(tree_lst) == 0:  # no trees no problem
         return 0
     for idx, check in enumerate(tree_lst):
-        if check >= tree: # too big time to stop
+        if check >= tree:  # too big time to stop
             return idx + 1
     # if we get to this point we were able to see them all
-    return len(tree_lst) 
+    return len(tree_lst)
+
 
 # for each row
 for i, row in enumerate(trees):
@@ -64,7 +67,7 @@ for i, row in enumerate(trees):
 
         # get trees to left (reverse so closest first)
         to_left = row[:j][::-1]
-        # get trees to right 
+        # get trees to right
         to_right = row[j+1:]
         # get trees above (reverse so closest first)
         to_above = [trees[x][j] for x in range(i)][::-1]
@@ -73,8 +76,8 @@ for i, row in enumerate(trees):
 
         # final score
         smat[i][j] = (
-            how_many_seen(tree, to_left) * 
-            how_many_seen(tree, to_right) * 
+            how_many_seen(tree, to_left) *
+            how_many_seen(tree, to_right) *
             how_many_seen(tree, to_above) *
             how_many_seen(tree, to_below)
         )
